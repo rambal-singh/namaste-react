@@ -1,39 +1,28 @@
-/**
- * <div id="parent">
- *      <div id="child">
- *        <h1>i'm h1 tag </h1>
- *        <h2>i'm h1 tag </h2>
- *      <div>
- *  <div id="child2">
- *        <h1>i'm h1 tag </h1>
- *        <h2>i'm h1 tag </h2>
- *      <div>
- * <div>
- * 
- */
+import React from "react";
+import { createRoot } from 'react-dom/client';
 
-const parent= React.createElement(
-    "div",
-    {id:"parent"},
-   [ React.createElement(
-    "div",
-    {id:"child"},
-   [ React.createElement("h1",{},"i am h1 tag"),
-    React.createElement("h2",{},"i am h2 tag")
-]
-), React.createElement(
-    "div",
-    {id:"child2"},
-   [ React.createElement("h1",{},"i am h1 tag"),
-    React.createElement("h2",{},"i am h2 tag")
-]
-)]
+const parent = React.createElement(
+  "div",
+  { id: "parent" },
+  [
+    React.createElement(
+      "div",
+      { id: "child", key: "child1" }, // Add unique key
+      [
+        React.createElement("h1", {key: "child3"}, "i am h1 tag"),
+        React.createElement("h2", {key: "child4"}, "i am h2 tag")
+      ]
+    ),
+    React.createElement(
+      "div",
+      { id: "child2", key: "child2" }, // Add unique key
+      [
+        React.createElement("h1", {key: "child5"}, "i am h1 tag"),
+        React.createElement("h2", {key: "child6"}, "i am h2 tag")
+      ]
+    )
+  ]
 );
-console.log(parent);
 
-
-// const heading = React.createElement("h2",{id:"heading"},"Hello world from React")
-// console.log(heading);//printing a object
-
-const root  = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent)// this render method is basically converting the OBJECT into h1 tag and put it in the DOM.
+const root = createRoot(document.getElementById("root"));
+root.render(parent);
